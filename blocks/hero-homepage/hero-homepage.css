@@ -1,0 +1,56 @@
+/* Hero Homepage — full-width blue banner with text content */
+
+.hero-homepage-container {
+  background-color: var(--color-blue-vibrant);
+}
+
+.hero-homepage-container .hero-homepage-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-homepage {
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  padding: 48px 32px 56px;
+  color: var(--color-white);
+}
+
+.hero-homepage > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 560px;
+}
+
+.hero-homepage h1 {
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin: 0 0 12px;
+}
+
+.hero-homepage h2 {
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-white);
+  margin: 0 0 24px;
+}
+
+.hero-homepage a {
+  color: var(--color-white);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.hero-homepage a:hover {
+  text-decoration: underline;
+}
+
+.hero-homepage > div > div {
+  margin-bottom: 4px;
+}

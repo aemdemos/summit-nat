@@ -1,0 +1,61 @@
+/* Columns Highlight — two-column promo on colored background */
+
+.columns-highlight {
+  color: var(--color-white);
+}
+
+.columns-highlight > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-highlight > div > div {
+  flex: 1;
+}
+
+.columns-highlight h3 {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin: 0 0 16px;
+}
+
+.columns-highlight p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-white);
+  margin: 0 0 8px;
+}
+
+.columns-highlight img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Checkmark icons inline */
+.columns-highlight img[alt="checkmark"] {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* QR code column */
+.columns-highlight > div > div:last-child {
+  text-align: center;
+}
+
+.columns-highlight > div > div:last-child img {
+  max-width: 180px;
+}
+
+@media (width >= 900px) {
+  .columns-highlight > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+}

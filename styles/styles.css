@@ -10,70 +10,104 @@
  * governing permissions and limitations under the License.
  */
 
+/* ============================================================
+   Nationwide Design System — Extracted from nationwide.com
+   ============================================================
+   Primary font (body): Gotham → Inter (Google Font equivalent)
+   Secondary font (headings): Tiempos Headline → Source Serif 4
+   ============================================================ */
+
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --overlay-background-color:lightgrey;
+  /* colors - Nationwide palette */
+  --background-color: #fff;
+  --light-color: #f4f4f5;
+  --dark-color: #141b4d;
+  --text-color: #222;
+  --text-color-dark: #171717;
+  --link-color: #0047bb;
+  --link-hover-color: #003a99;
+  --overlay-background-color: #f4f4f5;
+
+  /* Nationwide brand colors */
+  --color-blue-vibrant: #0047bb;
+  --color-blue-dark: #141b4d;
+  --color-blue-light: #8cc8e9;
+  --color-gray-pale: #f4f4f5;
+  --color-white: #fff;
+  --color-text: #222;
+  --color-text-inverse: #fff;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: "Inter", inter-fallback, sans-serif;
+  --heading-font-family: "Source Serif 4", source-serif-fallback, serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes - mobile first */
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 28px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
 
   /* layout */
   --max-width-site: 1200px;
 
-  /* nav heights */
-  --nav-height: 64px;
+  /* nav heights — 3-bar Nationwide header (45 + 80 + 72) */
+  --nav-height: 197px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
   /* fixed-width / code */
   --fixed-font-family: 'Roboto Mono', menlo, consolas, monospace;
+
+  /* spacing */
+  --spacing-xs: 8px;
+  --spacing-s: 16px;
+  --spacing-m: 24px;
+  --spacing-l: 40px;
+  --spacing-xl: 56px;
+  --spacing-xxl: 80px;
+
+  /* buttons */
+  --button-border-radius: 4px;
+  --button-padding: 9px 16px;
+  --button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  --button-font-weight: 500;
+
+  /* transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease-out;
+
+  /* focus */
+  --focus-outline: 2px solid var(--color-blue-vibrant);
+  --focus-outline-offset: 2px;
 }
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
+  font-family: inter-fallback;
+  size-adjust: 107%;
   src: local('Arial');
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+  font-family: source-serif-fallback;
+  size-adjust: 105%;
+  src: local('Georgia');
 }
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
+    /* heading sizes - desktop */
+    --heading-font-size-xxl: 36px;
+    --heading-font-size-xl: 32px;
     --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
+    --heading-font-size-m: 24px;
     --heading-font-size-s: 20px;
     --heading-font-size-xs: 18px;
   }
@@ -87,6 +121,7 @@ body {
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 body.appear {
@@ -113,6 +148,7 @@ footer .footer[data-block-status="loaded"] {
   }
 }
 
+/* headings */
 h1,
 h2,
 h3,
@@ -123,8 +159,9 @@ h6 {
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.1;
   scroll-margin: 40px;
+  color: var(--text-color-dark);
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -174,6 +211,7 @@ a {
   color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
@@ -181,49 +219,86 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+a:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  border-radius: 2px;
+}
+
+/* buttons - primary (solid blue) */
 a.button,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: 1px solid transparent;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
-  line-height: 1.25;
+  font-weight: var(--button-font-weight);
+  font-size: var(--body-font-size-m);
+  line-height: 1;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-dark);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: var(--button-transition);
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: #7ab8d9;
+  color: var(--color-blue-dark);
   cursor: pointer;
+}
+
+a.button:focus-visible,
+button:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
   cursor: unset;
+  opacity: 0.6;
 }
 
+/* buttons - secondary (hollow / outlined) */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid var(--color-blue-vibrant);
+  color: var(--color-blue-vibrant);
+}
+
+a.button.secondary:hover,
+button.secondary:hover {
+  background-color: var(--color-blue-vibrant);
+  color: var(--color-white);
+}
+
+/* buttons - on dark backgrounds */
+a.button.light,
+button.light {
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+}
+
+a.button.light:hover,
+button.light:hover {
+  background-color: var(--color-white);
+  color: var(--color-blue-vibrant);
 }
 
 main img {
@@ -245,14 +320,14 @@ main img {
 
 /* sections */
 main > .section {
-  padding: 40px 0;
+  padding: var(--spacing-l) 0;
   margin: 0;
 }
 
 main > .section > div:not(.bg-image) {
   max-width: var(--max-width-site);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--spacing-m);
 }
 
 /* Section metadata: background image sits behind content */
@@ -294,10 +369,79 @@ main > .section:first-of-type {
   }
 }
 
-/* section metadata */
+/* section variants - light gray */
 main .section.light,
 main .section.highlight {
-  background-color: var(--light-color);
+  background-color: var(--color-gray-pale);
   margin: 0;
-  padding: 40px 0;
+  padding: var(--spacing-l) 0;
+}
+
+/* section variants - vibrant blue */
+main .section.blue {
+  background-color: var(--color-blue-vibrant);
+  color: var(--color-text-inverse);
+  margin: 0;
+  padding: var(--spacing-l) 0;
+}
+
+main .section.blue h1,
+main .section.blue h2,
+main .section.blue h3,
+main .section.blue h4,
+main .section.blue h5,
+main .section.blue h6 {
+  color: var(--color-text-inverse);
+}
+
+main .section.blue a {
+  color: var(--color-text-inverse);
+}
+
+main .section.blue a.button {
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+}
+
+main .section.blue a.button:hover {
+  background-color: var(--color-white);
+  color: var(--color-blue-vibrant);
+}
+
+/* section variants - dark navy */
+main .section.dark {
+  background-color: var(--color-blue-dark);
+  color: var(--color-text-inverse);
+  margin: 0;
+  padding: var(--spacing-l) 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--color-text-inverse);
+}
+
+main .section.dark a {
+  color: var(--color-blue-light);
+}
+
+main .section.dark a.button {
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+}
+
+main .section.dark a.button:hover {
+  background-color: var(--color-white);
+  color: var(--color-blue-dark);
+}
+
+/* centered text sections */
+main .section.center {
+  text-align: center;
 }

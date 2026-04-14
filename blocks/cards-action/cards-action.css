@@ -1,0 +1,48 @@
+/* Cards Action — icon-led quick action cards (tri-promo layout) */
+
+.cards-action {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.cards-action > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.cards-action h3 {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-color);
+  margin: 0 0 8px;
+}
+
+.cards-action p,
+.cards-action > div > div:not(:first-child, :last-child) {
+  font-size: 16px;
+  color: var(--text-color);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.cards-action a {
+  display: inline-block;
+  padding: 9px 24px;
+  border: 1px solid var(--color-blue-vibrant);
+  border-radius: var(--button-border-radius);
+  color: var(--color-blue-vibrant);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--button-transition);
+}
+
+.cards-action a:hover {
+  background-color: var(--color-blue-vibrant);
+  color: var(--color-white);
+  text-decoration: none;
+}

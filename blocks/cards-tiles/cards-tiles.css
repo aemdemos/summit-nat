@@ -1,0 +1,66 @@
+/* Cards Tiles — linked tile cards with blue overlay text */
+
+.cards-tiles {
+  padding: 0;
+}
+
+.cards-tiles > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4px;
+}
+
+.cards-tiles > div > div {
+  position: relative;
+  background-color: var(--color-blue-vibrant);
+  min-height: 180px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: background-color var(--transition-base);
+}
+
+.cards-tiles > div > div:hover {
+  background-color: var(--link-hover-color);
+}
+
+.cards-tiles > div > div > div {
+  padding: 20px 24px;
+  width: 100%;
+}
+
+.cards-tiles a {
+  color: var(--color-white);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  display: block;
+}
+
+.cards-tiles a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards-tiles a:hover {
+  text-decoration: none;
+}
+
+/* First tile in each set is larger */
+.cards-tiles > div > div:first-child {
+  min-height: 280px;
+}
+
+@media (width >= 900px) {
+  .cards-tiles > div {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .cards-tiles > div > div:first-child {
+    grid-row: span 2;
+    min-height: 360px;
+  }
+}

@@ -1,0 +1,56 @@
+/* Columns Promo — three centered icon/text/CTA columns */
+
+.columns-promo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.columns-promo > div > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.columns-promo h3 {
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-blue-vibrant);
+  margin: 0 0 8px;
+}
+
+.columns-promo p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0 0 16px;
+}
+
+.columns-promo a {
+  display: inline-block;
+  padding: 9px 24px;
+  border: 1px solid var(--color-blue-vibrant);
+  border-radius: var(--button-border-radius);
+  color: var(--color-blue-vibrant);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--button-transition);
+}
+
+.columns-promo a:hover {
+  background-color: var(--color-blue-vibrant);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .columns-promo > div {
+    flex-direction: row;
+    gap: 40px;
+  }
+}

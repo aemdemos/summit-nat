@@ -1,0 +1,149 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.nationwide.com/"
+      ],
+      "description": "Nationwide homepage with hero banner, quick-action cards, promotional columns, image tiles, CTA banners, and mobile app promo",
+      "blocks": [
+        {
+          "name": "hero-homepage",
+          "instances": [
+            ".nw-home-quote-banner"
+          ]
+        },
+        {
+          "name": "cards-action",
+          "instances": [
+            ".custom-tri-promo"
+          ]
+        },
+        {
+          "name": "columns-promo",
+          "instances": [
+            "#p43486 .row.text-center.align-center"
+          ]
+        },
+        {
+          "name": "cards-tiles",
+          "instances": [
+            "#p30097",
+            "#p30087"
+          ]
+        },
+        {
+          "name": "columns-highlight",
+          "instances": [
+            "#p43655 .row.nw-inner-bun--sm"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Banner",
+          "selector": ".nw-home-quote-banner",
+          "style": "blue",
+          "blocks": [
+            "hero-homepage"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Tri-Promo Quick Actions",
+          "selector": ".custom-tri-promo",
+          "style": null,
+          "blocks": [
+            "cards-action"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Multi-Option Promo",
+          "selector": "#p43486",
+          "style": "light",
+          "blocks": [
+            "columns-promo"
+          ],
+          "defaultContent": [
+            "#p43486 .nw-heading-tiempos-md"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Member CTA Banner",
+          "selector": "#p45265",
+          "style": "dark",
+          "blocks": [],
+          "defaultContent": [
+            "#p45265 .nw-cta-small"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Image Tiles Two",
+          "selector": "#p30097",
+          "style": null,
+          "blocks": [
+            "cards-tiles"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Image Tiles Three",
+          "selector": "#p30087",
+          "style": null,
+          "blocks": [
+            "cards-tiles"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "About Mission Text",
+          "selector": "#p45234",
+          "style": "center",
+          "blocks": [],
+          "defaultContent": [
+            "#p45234 h2",
+            "#p45234 p"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "Business CTA Banner",
+          "selector": "#p45310",
+          "style": "dark",
+          "blocks": [],
+          "defaultContent": [
+            "#p45310 .cta-text"
+          ]
+        },
+        {
+          "id": "section-9",
+          "name": "Mobile App Promo",
+          "selector": "#p43655",
+          "style": "blue",
+          "blocks": [
+            "columns-highlight"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-10",
+          "name": "Disclaimer",
+          "selector": "#p44604",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#p44604 .nw-text-sm"
+          ]
+        }
+      ]
+    }
+  ]
+}
