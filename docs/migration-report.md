@@ -276,6 +276,45 @@ Refined all 5 homepage block variants with desktop CSS matching the Nationwide s
 
 ---
 
+## Header Polish — Iterative Refinements
+
+The header required multiple rounds of pixel-level adjustments to match the source exactly.
+
+### Key Refinements Made
+
+| Area | Issue | Fix |
+|------|-------|-----|
+| Nav path | Header empty on published EDS page | Changed default from `/content/nav` to `/nav` |
+| Font | Body font (Inter) visibly different from Gotham | Switched to Poppins (closest Google Font to Gotham) |
+| Utility bar bg | Was white, should be gray | Changed to `#f4f4f5` (matches source `rgb(244,244,245)`) |
+| Utility hover | Underline stayed on hover | Added `text-decoration-color: transparent` on hover |
+| Logo size | Too large (64px) | Corrected to 205x60px (exact source dimensions) |
+| Logo hover | No grow effect | Added `transform: scale(1.05)` with `0.35s` transition |
+| Search input | Was a link, clicked away | Replaced with actual `<form>` with `<input>` + `<button>` |
+| Search bg | Transparent | Changed to `#f6f6f6` (exact source value) |
+| Search border | Full box border | Changed to `border-bottom: 2px solid #707070` only |
+| Search icon | Wrong direction, wrong icon | Replaced with actual Nationwide `BoltSearchIcon.svg` |
+| Search hover | Border color changed | Changed to outer box-shadow `0 0 6px rgb(0 0 0 / 10%)` |
+| Login button | Blue (#0047bb) | Changed to green `#008574`, hover `#056f61` |
+| Login size | Too small | Matched source: `min-width: 86px`, `height: 42px` |
+| Menu hover | Just bg change | Added 3-sided border (top+left+right) `#707070`, `border-radius: 4px 4px 0 0` |
+| CTA buttons | Different colors (navy/teal) | Both now `#0047bb` (Nationwide blue), hover `#053d9a` |
+| Sticky header | Fixed position | Changed to `position: relative` (source not sticky) |
+| Content width | 1200px, too wide | Changed to `1140px` with `box-sizing: border-box` |
+| `:search:` syntax | Not working on published site | Added detection for all 3 EDS transformation states |
+
+### Author-Friendly `:search:` Syntax
+
+The search form uses `:search:` marker in the nav document. The JS detects it in all environments:
+
+| Environment | `:search:` becomes | Detection |
+|---|---|---|
+| Raw (pre-decoration) | `:search:` text | `text === ':search:'` |
+| Published EDS | `<span class="icon icon-search">` | `querySelector('.icon-search')` |
+| Local EDS | `<a href="/search">Search</a>` | `link.text === 'search'` |
+
+---
+
 ## Current State
 
 **Scope:** Desktop only (mobile excluded for now)
@@ -288,11 +327,70 @@ Refined all 5 homepage block variants with desktop CSS matching the Nationwide s
 - [x] Design system extraction (colors, typography, buttons, sections)
 - [x] Import infrastructure (5 parsers, 2 transformers, 1 import script)
 - [x] Content import (homepage → content/index.plain.html)
-- [x] Header/navigation migration (3-bar desktop layout)
+- [x] Header/navigation migration (3-bar desktop layout, pixel-perfect)
 - [x] Block-level CSS refinement (all 5 blocks styled for desktop)
+
+### In Progress
+
+- [ ] Footer migration (6 sections) — initial implementation done, needs polish pass
 
 ### Next Steps
 
-- [ ] Footer migration
+- [ ] Footer polish (pixel-perfect comparison against source)
 - [ ] Visual QA and comparison against source
 - [ ] Mobile responsive adaptation (deferred)
+
+---
+
+## Task 7: Footer Migration
+
+Migrated the Nationwide desktop footer as a 6-section dark layout.
+
+### Source Structure (nationwide.com)
+
+| Section | Content |
+|---------|---------|
+| 1. Brand | Nationwide logo (white, inverted) + "1-877 On Your Side (1-888-891-0135)" right-aligned |
+| 2. Social | Facebook, X, Instagram, LinkedIn, YouTube icons — right-aligned |
+| 3. About | About us, For agents, Careers, Help center, Blog, En Español — pipe-separated links |
+| 4. Partners | "Sites for business partners:" label + 5 partner links pipe-separated |
+| 5. Legal | Products underwritten disclaimer text (small, gray) |
+| 6. Privacy | Privacy links pipe-separated + BrokerCheck and TRUSTe badge images |
+
+### Footer Document Structure (content/footer.plain.html)
+
+6 authored sections, each mapped to a CSS class by the footer JS:
+
+| Section | CSS Class | Content |
+|---------|-----------|---------|
+| 1 | `footer-brand` | Logo `<img>` + phone `<p>` with `<strong>` and `<a href="tel:">` |
+| 2 | `footer-social` | `<p>` with 5 `<a><img>` social icon links |
+| 3 | `footer-about` | `<p>` with pipe-separated links |
+| 4 | `footer-partners` | Label `<p>` + links `<p>` with pipe separators |
+| 5 | `footer-legal` | Single `<p>` with disclaimer text and FINRA links |
+| 6 | `footer-privacy` | Links `<p>` + images `<p>` with BrokerCheck and TRUSTe badges |
+
+### Design Details
+
+| Property | Value |
+|----------|-------|
+| Background | `#222222` (dark gray) |
+| Text color | `#c9cac8` (light gray) |
+| Link color | `#ffffff` (white, underlined) |
+| Font size | 14px (12px for legal text) |
+| Container max-width | 1200px |
+| Social icons | 36x36px SVGs, gray with white on hover |
+| Logo | Horizontal logo with `filter: brightness(0) invert(1)` for white |
+
+### Files Created/Modified
+
+| File | Changes |
+|------|---------|
+| `content/footer.plain.html` | Created — 6 sections with all footer content |
+| `blocks/footer/footer.js` | Rewritten — assigns 6 section classes, cleans EDS button decoration |
+| `blocks/footer/footer.css` | Rewritten — dark background, 6 section layouts, social icon styling |
+| `icons/facebook.svg` | Created — Facebook social icon |
+| `icons/x.svg` | Created — X/Twitter social icon |
+| `icons/instagram.svg` | Created — Instagram social icon |
+| `icons/linkedin.svg` | Created — LinkedIn social icon |
+| `icons/youtube.svg` | Created — YouTube social icon |
