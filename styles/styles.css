@@ -57,8 +57,8 @@
   /* layout */
   --max-width-site: 1200px;
 
-  /* nav heights — 3-bar Nationwide header (45 + 80 + 72) */
-  --nav-height: 197px;
+  /* nav heights */
+  --nav-height: 0px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
