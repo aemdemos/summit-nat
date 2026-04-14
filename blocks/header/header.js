@@ -63,19 +63,19 @@ function decorateBrand(navBrand) {
   const wrapper = navBrand.querySelector('.default-content-wrapper');
   if (!wrapper) return;
   wrapper.querySelectorAll('p').forEach((p) => {
-    const img = p.querySelector('img');
     const link = p.querySelector('a');
     const text = p.textContent.trim();
-    if (img) {
-      p.classList.add('nav-logo');
-      if (link) link.className = '';
-    } else if (p.classList.contains('button-wrapper') && link) {
-      link.className = 'nav-login-btn';
-      p.className = 'nav-login';
-    } else if (text === ':search:' || p.querySelector('.icon-search') || (link && link.textContent.trim().toLowerCase() === 'search')) {
+    // Search detection must come first — icon-search contains an <img> that would match logo check
+    if (text === ':search:' || p.querySelector('.icon-search') || (link && link.textContent.trim().toLowerCase() === 'search')) {
       p.classList.add('nav-search');
       p.textContent = '';
       p.append(buildSearchForm());
+    } else if (p.querySelector('picture, img[alt]') && link) {
+      p.classList.add('nav-logo');
+      link.className = '';
+    } else if (p.classList.contains('button-wrapper') && link) {
+      link.className = 'nav-login-btn';
+      p.className = 'nav-login';
     }
   });
 }
