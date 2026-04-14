@@ -55,7 +55,24 @@ function decorateBrand(navBrand) {
       p.className = 'nav-login';
     } else if (link && link.textContent.trim().toLowerCase() === 'search') {
       p.classList.add('nav-search');
-      link.className = 'nav-search-btn';
+      const searchUrl = link.href;
+      const form = document.createElement('form');
+      form.className = 'nav-search-form';
+      form.action = searchUrl;
+      form.method = 'get';
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'query';
+      input.placeholder = 'Search';
+      input.className = 'nav-search-input';
+      input.setAttribute('aria-label', 'Search');
+      const btn = document.createElement('button');
+      btn.type = 'submit';
+      btn.className = 'nav-search-submit';
+      btn.setAttribute('aria-label', 'Submit search');
+      form.append(input, btn);
+      p.textContent = '';
+      p.append(form);
     }
   });
 }
