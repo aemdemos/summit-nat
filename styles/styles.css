@@ -55,7 +55,7 @@
   --heading-font-size-xs: 16px;
 
   /* layout */
-  --max-width-site: 1200px;
+  --max-width-site: 1140px;
 
   /* nav heights */
   --nav-height: 0px;
@@ -68,7 +68,7 @@
   /* spacing */
   --spacing-xs: 8px;
   --spacing-s: 16px;
-  --spacing-m: 24px;
+  --spacing-m: 16px;
   --spacing-l: 40px;
   --spacing-xl: 56px;
   --spacing-xxl: 80px;
@@ -328,6 +328,7 @@ main > .section > div:not(.bg-image) {
   max-width: var(--max-width-site);
   margin: auto;
   padding: 0 var(--spacing-m);
+  box-sizing: border-box;
 }
 
 /* Section metadata: background image sits behind content */
@@ -365,7 +366,7 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div:not(.bg-image) {
-    padding: 0 32px;
+    padding: 0 16px;
   }
 }
 
