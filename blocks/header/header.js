@@ -40,39 +40,42 @@ function decorateUtility(navUtility) {
   if (rightLink) rightLink.classList.add('nav-utility-right');
 }
 
+function buildSearchForm() {
+  const form = document.createElement('form');
+  form.className = 'nav-search-form';
+  form.action = '/search';
+  form.method = 'get';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = 'query';
+  input.placeholder = 'Search';
+  input.className = 'nav-search-input';
+  input.setAttribute('aria-label', 'Search');
+  const btn = document.createElement('button');
+  btn.type = 'submit';
+  btn.className = 'nav-search-submit';
+  btn.setAttribute('aria-label', 'Submit search');
+  form.append(input, btn);
+  return form;
+}
+
 function decorateBrand(navBrand) {
   const wrapper = navBrand.querySelector('.default-content-wrapper');
   if (!wrapper) return;
   wrapper.querySelectorAll('p').forEach((p) => {
     const img = p.querySelector('img');
     const link = p.querySelector('a');
+    const text = p.textContent.trim();
     if (img) {
       p.classList.add('nav-logo');
       if (link) link.className = '';
     } else if (p.classList.contains('button-wrapper') && link) {
-      // EDS auto-decorated <strong><a> into button-wrapper
       link.className = 'nav-login-btn';
       p.className = 'nav-login';
-    } else if (link && link.textContent.trim().toLowerCase() === 'search') {
+    } else if (text === ':search:' || (link && link.textContent.trim().toLowerCase() === 'search')) {
       p.classList.add('nav-search');
-      const searchUrl = link.href;
-      const form = document.createElement('form');
-      form.className = 'nav-search-form';
-      form.action = searchUrl;
-      form.method = 'get';
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.name = 'query';
-      input.placeholder = 'Search';
-      input.className = 'nav-search-input';
-      input.setAttribute('aria-label', 'Search');
-      const btn = document.createElement('button');
-      btn.type = 'submit';
-      btn.className = 'nav-search-submit';
-      btn.setAttribute('aria-label', 'Submit search');
-      form.append(input, btn);
       p.textContent = '';
-      p.append(form);
+      p.append(buildSearchForm());
     }
   });
 }
