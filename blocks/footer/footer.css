@@ -170,16 +170,19 @@ footer .footer-privacy .columns-wrapper {
   padding: 0;
 }
 
+/* Override base columns: force row layout, not column */
 footer .footer-privacy .columns > div {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
 }
 
-/* Left column: privacy links */
+/* Left column: privacy links — take remaining space */
 footer .footer-privacy .columns > div > div:first-child {
-  flex: 1;
+  flex: 1 1 auto;
+  order: unset;
 }
 
 footer .footer-privacy .columns > div > div:first-child p {
@@ -188,16 +191,17 @@ footer .footer-privacy .columns > div > div:first-child p {
   line-height: 1.6;
 }
 
-/* Right column: badge images */
+/* Right column: badge images — shrink to fit content */
 footer .footer-privacy .columns > div > div:last-child {
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  order: unset;
 }
 
 footer .footer-privacy .columns > div > div:last-child p {
   margin: 0;
   display: flex;
-  gap: 32px;
-  align-items: center;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 footer .footer-privacy .columns > div > div:last-child a {
@@ -206,7 +210,9 @@ footer .footer-privacy .columns > div > div:last-child a {
   text-decoration: none;
 }
 
-footer .footer-privacy .columns > div > div:last-child img {
+/* Override base columns img { width: 100% } */
+footer .footer-privacy .columns img {
+  width: auto;
   height: auto;
   max-height: 67px;
 }
