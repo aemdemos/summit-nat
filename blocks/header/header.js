@@ -72,7 +72,7 @@ function decorateBrand(navBrand) {
     } else if (p.classList.contains('button-wrapper') && link) {
       link.className = 'nav-login-btn';
       p.className = 'nav-login';
-    } else if (text === ':search:' || (link && link.textContent.trim().toLowerCase() === 'search')) {
+    } else if (text === ':search:' || p.querySelector('.icon-search') || (link && link.textContent.trim().toLowerCase() === 'search')) {
       p.classList.add('nav-search');
       p.textContent = '';
       p.append(buildSearchForm());
