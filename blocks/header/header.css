@@ -257,16 +257,18 @@ header nav .nav-menu > ul > li {
   font-weight: 500;
   color: var(--color-blue-vibrant);
   cursor: pointer;
-  padding: 24px 20px;
+  padding: 20px 20px 28px;
   white-space: nowrap;
   line-height: 24px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, background-color 0.15s;
 }
 
 header nav .nav-menu > ul > li:hover {
-  background-color: #e5e5e6;
+  background-color: #e8e9ea;
+  border-top-color: #707070;
 }
-
-/* No dropdown arrows visible — matches source */
 
 /* CTA button group (Claims, Pay a bill) — pushed to right */
 header nav .nav-cta-group {
@@ -278,35 +280,28 @@ header nav .nav-cta-group {
 }
 
 header nav .nav-cta-btn {
-  display: inline-block;
-  padding: 10px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1px solid transparent;
   border-radius: 4px;
   font-size: 16px;
   font-weight: 500;
+  line-height: 24px;
   text-decoration: none;
-  transition: var(--button-transition);
+  transition: 0.35s;
   white-space: nowrap;
-  line-height: 1.25;
-}
-
-/* Claims button — dark blue */
-header nav .nav-cta-btn:first-child {
-  background-color: #1a3564;
+  background-color: var(--color-blue-vibrant);
   color: var(--color-white);
+  height: 42px;
+  box-sizing: border-box;
 }
 
-header nav .nav-cta-btn:first-child:hover {
-  background-color: #0f2340;
-}
-
-/* Pay a bill button — teal/green */
-header nav .nav-cta-btn:last-child {
-  background-color: #007a7c;
+header nav .nav-cta-btn:hover {
+  background-color: #053d9a;
   color: var(--color-white);
-}
-
-header nav .nav-cta-btn:last-child:hover {
-  background-color: #005e60;
+  text-decoration: none;
 }
 
 /* Dropdown menus */
