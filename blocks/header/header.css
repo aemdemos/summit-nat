@@ -106,6 +106,11 @@ header nav .nav-logo {
 header nav .nav-logo a {
   display: inline-block;
   line-height: 0;
+  transition: transform 0.35s ease;
+}
+
+header nav .nav-logo a:hover {
+  transform: scale(1.05);
 }
 
 header nav .nav-logo img {
@@ -123,9 +128,9 @@ header nav .nav-search-btn {
   display: inline-flex;
   align-items: center;
   gap: 0;
-  padding: 8px 4px 8px 12px;
+  padding: 8px 12px;
   border: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 2px solid #707070;
   border-radius: 0;
   font-size: 16px;
   color: #888;
@@ -135,16 +140,16 @@ header nav .nav-search-btn {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line function-url-quotes */
 header nav .nav-search-btn::after {
   content: '';
   display: inline-block;
-  width: 28px;
-  height: 28px;
-  /* stylelint-disable-next-line function-url-quotes */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.5' y1='16.5' x2='22' y2='22'/%3E%3C/svg%3E");
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.124 13.051a5.154 5.154 0 110-10.308 5.154 5.154 0 010 10.308M16.114 0a7.886 7.886 0 00-6.46 12.407L0 22.06 1.94 24l9.653-9.653A7.886 7.886 0 1016.113 0' fill='%23333'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
-  margin-left: 12px;
+  margin-left: auto;
   flex-shrink: 0;
 }
 
@@ -153,27 +158,27 @@ header nav .nav-search-btn:hover {
   text-decoration: none;
 }
 
-/* Login button — blue pill */
+/* Login button — green pill */
 header nav .nav-login {
   flex-shrink: 0;
 }
 
 header nav .nav-login-btn {
   display: inline-block;
-  padding: 12px 28px;
-  background-color: var(--color-blue-vibrant);
+  padding: 8px 16px;
+  background-color: #008574;
   color: var(--color-white);
-  border: none;
+  border: 1px solid transparent;
   border-radius: 4px;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
-  transition: var(--button-transition);
+  transition: 0.35s;
   margin-left: 16px;
 }
 
 header nav .nav-login-btn:hover {
-  background-color: var(--link-hover-color);
+  background-color: #056f61;
   color: var(--color-white);
   text-decoration: none;
 }
