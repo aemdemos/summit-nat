@@ -30,7 +30,7 @@ header nav .nav-utility {
 }
 
 header nav .nav-utility .default-content-wrapper {
-  max-width: var(--max-width-site);
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 16px;
   display: flex;
@@ -88,7 +88,7 @@ header nav .nav-brand {
 }
 
 header nav .nav-brand .default-content-wrapper {
-  max-width: var(--max-width-site);
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 16px;
   display: flex;
@@ -229,7 +229,7 @@ header nav .nav-sections {
 }
 
 header nav .nav-sections .default-content-wrapper {
-  max-width: var(--max-width-site);
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 16px;
   box-sizing: border-box;

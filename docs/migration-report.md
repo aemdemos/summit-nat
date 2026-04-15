@@ -100,8 +100,28 @@ Extracted the global design system from nationwide.com and applied it to `styles
 
 | Element | Original Font | EDS Equivalent | Weights |
 |---------|--------------|----------------|---------|
-| Body | Gotham (nw-primary) | Inter | 400, 500, 700 |
+| Body | Gotham (nw-primary) | Poppins | 400, 500, 700 |
 | Headings | Tiempos Headline (nw-secondary) | Source Serif 4 | 600 |
+
+### Font Licensing Note
+
+The source site uses **licensed commercial fonts** that cannot be used without purchasing licenses:
+
+| Font | Foundry | License | Used as |
+|------|---------|---------|---------|
+| **Gotham** | Hoefler&Co | Commercial (paid) | `nw-primary` — body text, nav, buttons, forms |
+| **Tiempos Headline** | Klim Type Foundry | Commercial (paid) | `nw-secondary` — H1 headings, decorative text |
+
+**Current substitute fonts** (closest free alternatives from Google Fonts):
+- **Poppins** → replaces Gotham (geometric sans-serif, similar weight/proportions)
+- **Source Serif 4** → replaces Tiempos Headline (modern serif, similar character)
+
+**To achieve pixel-perfect font matching**, the Nationwide team would need to provide licensed font files. The swap requires only:
+1. Add font files to `/fonts/` directory
+2. Update `styles/fonts.css` with `@font-face` declarations
+3. Update `--body-font-family` and `--heading-font-family` in `styles/styles.css`
+
+No other code changes needed — all sizing, weights, and spacing are already calibrated.
 
 ### Heading Sizes
 
@@ -328,15 +348,13 @@ The search form uses `:search:` marker in the nav document. The JS detects it in
 - [x] Import infrastructure (5 parsers, 2 transformers, 1 import script)
 - [x] Content import (homepage → content/index.plain.html)
 - [x] Header/navigation migration (3-bar desktop layout, pixel-perfect)
-- [x] Block-level CSS refinement (all 5 blocks styled for desktop)
-
-### In Progress
-
-- [ ] Footer migration (6 sections) — initial implementation done, needs polish pass
+- [x] Block-level CSS refinement (initial pass for all 5 blocks)
+- [x] Footer migration (6 sections, Columns block for privacy, all badges working)
 
 ### Next Steps
 
-- [ ] Footer polish (pixel-perfect comparison against source)
+- [ ] Hero-homepage block migration (desktop styling)
+- [ ] Remaining block polish (cards-action, cards-tiles, columns-promo, columns-highlight)
 - [ ] Visual QA and comparison against source
 - [ ] Mobile responsive adaptation (deferred)
 
@@ -363,12 +381,12 @@ Migrated the Nationwide desktop footer as a 6-section dark layout.
 
 | Section | CSS Class | Content |
 |---------|-----------|---------|
-| 1 | `footer-brand` | Logo `<img>` + phone `<p>` with `<strong>` and `<a href="tel:">` |
-| 2 | `footer-social` | `<p>` with 5 `<a><img>` social icon links |
+| 1 | `footer-brand` | Vertical logo SVG (eagle + Nationwide text) + phone `<p>` |
+| 2 | `footer-social` | DA: `:icon:` syntax / Local: `<span class="icon">` — 5 social icons |
 | 3 | `footer-about` | `<p>` with pipe-separated links |
 | 4 | `footer-partners` | Label `<p>` + links `<p>` with pipe separators |
 | 5 | `footer-legal` | Single `<p>` with disclaimer text and FINRA links |
-| 6 | `footer-privacy` | Links `<p>` + images `<p>` with BrokerCheck and TRUSTe badges |
+| 6 | `footer-privacy` | **Columns block** — left: privacy links (2 rows), right: 3 badge images |
 
 ### Design Details
 
@@ -377,20 +395,54 @@ Migrated the Nationwide desktop footer as a 6-section dark layout.
 | Background | `#222222` (dark gray) |
 | Text color | `#c9cac8` (light gray) |
 | Link color | `#ffffff` (white, underlined) |
-| Font size | 14px (12px for legal text) |
+| Font size | 14px |
 | Container max-width | 1200px |
-| Social icons | 36x36px SVGs, gray with white on hover |
-| Logo | Horizontal logo with `filter: brightness(0) invert(1)` for white |
+| Social icons | 40x40px, default `#87898b` (filter invert 0.53), hover white |
+| Social icon gap | 30px |
+| Logo | Vertical SVG (eagle + text), rendered via `nationwide-logo-footer.svg` |
+| Pipe separators | JS wraps `\|` in `<span class="footer-separator">` with `padding: 0 8px` |
+| Badge images | BrokerCheck (local PNG), Equal Housing (local SVG), TRUSTe (local PNG) |
+| Badge alignment | `align-items: flex-start` (top-aligned), `gap: 24px` |
+
+### DA/Local File Sync
+
+| File | DA version | Local preview version |
+|------|-----------|----------------------|
+| Social icons | `:facebook:`, `:x:`, etc. | `<span class="icon icon-facebook">` |
+| Badge images | `./brokercheck.png`, `./equal-housing.svg`, `./truste-seal.png` | Same relative paths |
+
+### Footer Polish — Key Refinements
+
+| Area | Issue | Fix |
+|------|-------|-----|
+| Logo | Horizontal logo, separate text | Replaced with vertical SVG (eagle + Nationwide text in one file) |
+| Social icon color | Too light (#c9cac8) | Changed to darker `#87898b` (invert 0.53), white on hover |
+| Social icon gap | Too tight | Set to 30px |
+| Pipe separators | Tight spacing | JS wraps `\|` text nodes in styled `<span>` with 8px padding |
+| Legal text | Was 12px, too small | Changed to 14px matching source |
+| Privacy section | Nested divs (broken in DA) | Replaced with Columns block for proper authoring |
+| Badge images | Only 2 images, TRUSTe missing | Added Equal Housing SVG + TRUSTe PNG (converted from SVG) |
+| Badge alignment | Center-aligned (camel humps) | Changed to `flex-start` (top-aligned) |
+| Badge gap | 32px, too wide | Changed to 24px matching source |
+| Privacy links indent | 16px extra vs other sections | Fixed padding inheritance from base columns CSS |
+| Columns override | Base `.columns img { width: 100% }` stretching badges | Added `footer .footer-privacy .columns img { width: auto }` |
+| TRUSTe SVG issue | EDS served SVG as `Content-Type: image/png` | Converted SVG to actual PNG using sharp |
 
 ### Files Created/Modified
 
 | File | Changes |
 |------|---------|
-| `content/footer.plain.html` | Created — 6 sections with all footer content |
-| `blocks/footer/footer.js` | Rewritten — assigns 6 section classes, cleans EDS button decoration |
-| `blocks/footer/footer.css` | Rewritten — dark background, 6 section layouts, social icon styling |
-| `icons/facebook.svg` | Created — Facebook social icon |
-| `icons/x.svg` | Created — X/Twitter social icon |
-| `icons/instagram.svg` | Created — Instagram social icon |
-| `icons/linkedin.svg` | Created — LinkedIn social icon |
-| `icons/youtube.svg` | Created — YouTube social icon |
+| `content/footer.plain.html` | Created — 6 sections, DA format (`:icon:` syntax, local images) |
+| `footer.plain.html` (root) | Created — local preview version (`<span class="icon">` syntax) |
+| `blocks/footer/footer.js` | Rewritten — 6 section classes, pipe separator styling, button cleanup |
+| `blocks/footer/footer.css` | Rewritten — dark bg, all 6 sections, columns override for privacy |
+| `icons/nationwide-logo-footer.svg` | Created — vertical eagle + Nationwide text SVG |
+| `icons/facebook.svg` | Created |
+| `icons/x.svg` | Created |
+| `icons/instagram.svg` | Created |
+| `icons/linkedin.svg` | Created |
+| `icons/youtube.svg` | Created |
+| `icons/equal-housing.svg` | Created — Equal Housing Opportunity logo |
+| `content/brokercheck.png` | Downloaded — BrokerCheck badge |
+| `content/equal-housing.svg` | Downloaded — Equal Housing badge (for DA upload) |
+| `content/truste-seal.png` | Created — TRUSTe seal (SVG converted to PNG via sharp) |

@@ -55,7 +55,7 @@
   --heading-font-size-xs: 16px;
 
   /* layout */
-  --max-width-site: 1140px;
+  --max-width-site: 1200px;
 
   /* nav heights */
   --nav-height: 0px;
@@ -129,7 +129,7 @@ body.appear {
 }
 
 header {
-  height: var(--header-height);
+  height: auto;
 }
 
 header .header,
@@ -395,7 +395,7 @@ main .section.blue h6 {
   color: var(--color-text-inverse);
 }
 
-main .section.blue a {
+main .section.blue a:not(.hero-quote-btn) {
   color: var(--color-text-inverse);
 }
 
