@@ -1,10 +1,11 @@
-/* Columns Promo — three centered icon/text/CTA columns */
+/* Columns Promo — three centered icon/text/CTA columns on light gray bg */
 
 .columns-promo > div {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   text-align: center;
+  padding: 16px 0 32px;
 }
 
 .columns-promo > div > div {
@@ -12,33 +13,58 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 15px;
   gap: 0;
 }
 
-.columns-promo h3 {
-  font-family: var(--body-font-family);
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--color-blue-vibrant);
-  margin: 0 0 8px;
+/* Circular icons — 65x65 matching source */
+.columns-promo > div > div > p:first-child {
+  margin: 0 0 24px;
 }
 
+.columns-promo img {
+  width: 65px;
+  height: 65px;
+}
+
+/* Column headings — blue, 24px */
+.columns-promo h3 {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-blue-vibrant);
+  margin: 0 0 20px;
+}
+
+/* Description — 18px, dark text */
 .columns-promo p {
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.6;
   color: var(--text-color);
-  margin: 0 0 16px;
+  margin: 0 0 20px;
+}
+
+/* CTA button — full width, pushed to bottom of column */
+.columns-promo > div > div > p:last-child {
+  width: 100%;
+  margin: auto 0 0;
 }
 
 .columns-promo a {
-  display: inline-block;
-  padding: 9px 24px;
+  display: block;
+  width: 100%;
+  padding: 9px 11px;
   border: 1px solid var(--color-blue-vibrant);
-  border-radius: var(--button-border-radius);
+  border-radius: 4px;
   color: var(--color-blue-vibrant);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: center;
   text-decoration: none;
+  background: transparent;
+  box-sizing: border-box;
+  height: 38px;
   transition: var(--button-transition);
 }
 
@@ -51,6 +77,6 @@
 @media (width >= 900px) {
   .columns-promo > div {
     flex-direction: row;
-    gap: 40px;
+    gap: 0;
   }
 }

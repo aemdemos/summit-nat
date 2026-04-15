@@ -370,6 +370,17 @@ main > .section:first-of-type {
   }
 }
 
+/* section heading styling for light/promo sections */
+main .section.light h2 {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-blue-vibrant);
+  text-align: center;
+  margin-bottom: 5px;
+  padding-top: 20px;
+}
+
 /* section variants - light gray */
 main .section.light,
 main .section.highlight {

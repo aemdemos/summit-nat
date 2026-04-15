@@ -351,12 +351,91 @@ The search form uses `:search:` marker in the nav document. The JS detects it in
 - [x] Block-level CSS refinement (initial pass for all 5 blocks)
 - [x] Footer migration (6 sections, Columns block for privacy, all badges working)
 
+- [x] Hero-homepage block polish (two-column layout, image, form, caption bar)
+- [x] Cards-action block polish (3-column grid, source SVG icons, form elements, author-editable dropdown)
+- [x] Content structure fix (removed duplicate section breaks, split cards-tiles into separate sections)
+- [x] Main body width fix (1200px for content, 1140px for header)
+
+- [x] Columns-promo block polish (icons from source DOM paths, 3-col flex, button alignment)
+
 ### Next Steps
 
-- [ ] Hero-homepage block migration (desktop styling)
-- [ ] Remaining block polish (cards-action, cards-tiles, columns-promo, columns-highlight)
-- [ ] Visual QA and comparison against source
+- [ ] Cards-tiles block polish
+- [ ] Columns-highlight block polish
+- [ ] Default content sections polish (CTA banners, about text, disclaimer)
+- [ ] Visual QA and full-page comparison against source
 - [ ] Mobile responsive adaptation (deferred)
+
+---
+
+## Task 8: Hero-Homepage Block Polish
+
+Restructured and styled the hero block to match the source's two-column layout.
+
+### Key Changes
+
+| Change | Details |
+|--------|---------|
+| Content structure | Separated hero from cards-action with section break; added hero image |
+| Two-column layout | Text left (55%) + image right (45%) using `flex-direction: row-reverse` |
+| Image | Peyton Manning photo with `object-fit: cover`, flush top-to-bottom |
+| Caption bar | Dark navy bar "He's so much more than Peyton Manning." stuck to image bottom |
+| Quote form | JS builds `<select>` dropdown + ZIP Code input + "Start your quote" button from authored links |
+| ZIP Code toggle | JS hides ZIP input for Business, Life, Pet, See all insurance options |
+| Header height | Fixed `header { height: auto }` — was `0px` causing hero to hide behind collapsed header |
+| Section padding | Removed for hero section so content is flush edge-to-edge |
+
+---
+
+## Task 9: Cards-Action Block Polish
+
+Rebuilt the tri-promo quick actions from 3 separate blocks into one unified 3-column block.
+
+### Key Changes
+
+| Change | Details |
+|--------|---------|
+| Content restructure | Merged 3 separate blocks into 1 block with 3 rows (icon + content per row) |
+| SVG icons | Extracted exact path data from source DOM — person, magnifying glass, heart in `#0047bb` |
+| Custom JS | Detects card type by heading; builds dropdown for card 1, ZIP+Go for card 2 |
+| Author-editable dropdown | Options come from plain text `Pay a personal bill \| Pay a business bill \| ...` — no hardcoded values |
+| Full-width CTA buttons | `height: 38px`, `line-height: 18px`, `border-radius: 4px` matching source |
+| 3-column flex layout | `display: flex; justify-content: center` with equal columns |
+
+### Cards-Tiles Fix
+
+- Removed `a::after { position: absolute; inset: 0 }` overlay that was blocking hero form clicks
+- Split two cards-tiles blocks into separate sections for independent styling
+
+### Content Structure Fix
+
+- Removed all `<hr>` tags from index.plain.html — sections defined by `<div>` wrappers only
+- Fixed double section break issue in DA editor
+
+---
+
+## Task 10: Columns-Promo Block Polish
+
+Polished the 3-column promotional section to match the source exactly.
+
+### Key Changes
+
+| Change | Details |
+|--------|---------|
+| Icons | Extracted exact SVG path data from source DOM (`lifeinsurance-circle`, `opensign-circle`, `shield-circle`) — 65x65px with `#0047bb` fill |
+| Icon spacing | 24px margin below icons |
+| Description font | Changed to 18px (was 16px) matching source |
+| Button alignment | `margin: auto 0 0` pushes buttons to bottom of flex column — all 3 buttons aligned horizontally regardless of description text length |
+| Button height | `38px` with `line-height: 18px` matching source exactly |
+| Column padding | `0 15px` per column matching source |
+| Section padding | `16px 0 32px` for inner content area |
+| Section heading | Blue `#0047bb`, serif font, 32px, `padding-top: 20px`, centered |
+
+### Content Structure Fix
+
+- Removed all `<hr>` tags from `index.plain.html` — sections now defined by `<div>` wrappers only
+- Fixed double section break issue in DA editor (was caused by `<hr>` + `</div>` boundary both creating breaks)
+- Split cards-tiles into separate sections for independent styling
 
 ---
 
