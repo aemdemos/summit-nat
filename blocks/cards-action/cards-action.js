@@ -1,10 +1,10 @@
-function buildDropdown(links) {
+function buildDropdown(options) {
   const select = document.createElement('select');
   select.className = 'cards-action-select';
-  links.forEach((link) => {
+  options.forEach((text) => {
     const o = document.createElement('option');
-    o.textContent = link.textContent.trim();
-    o.value = link.href;
+    o.textContent = text;
+    o.value = text;
     select.append(o);
   });
   return select;
@@ -34,18 +34,17 @@ function decorateCard(bodyDiv) {
   const ctaLink = ctaParagraph ? ctaParagraph.querySelector('a') : null;
 
   if (headingText.includes('no login')) {
-    // Find the paragraph with pipe-separated option links (not the CTA paragraph)
+    // Find the paragraph with pipe-separated option labels (plain text)
     const paragraphs = bodyDiv.querySelectorAll('p');
     let optionsParagraph = null;
     paragraphs.forEach((p) => {
-      const links = p.querySelectorAll('a');
-      if (links.length >= 3 && p.textContent.includes('|')) {
+      if (p.textContent.includes('|') && !p.querySelector('a')) {
         optionsParagraph = p;
       }
     });
     if (optionsParagraph) {
-      const links = [...optionsParagraph.querySelectorAll('a')];
-      const select = buildDropdown(links);
+      const options = optionsParagraph.textContent.split('|').map((t) => t.trim()).filter(Boolean);
+      const select = buildDropdown(options);
       optionsParagraph.replaceWith(select);
     }
   } else if (headingText.includes('find a local')) {
