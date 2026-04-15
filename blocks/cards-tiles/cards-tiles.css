@@ -37,13 +37,10 @@
   line-height: 1.3;
   text-decoration: none;
   display: block;
+  position: relative;
 }
 
-.cards-tiles a::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-}
+/* Tile is made clickable via the link itself, no overlay needed */
 
 .cards-tiles a:hover {
   text-decoration: none;
