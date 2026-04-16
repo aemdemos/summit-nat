@@ -358,12 +358,17 @@ The search form uses `:search:` marker in the nav document. The JS detects it in
 
 - [x] Columns-promo block polish (icons from source DOM paths, 3-col flex, button alignment)
 
+- [x] Dark CTA sections polish (3-column Columns block, handshake/storefront icons, button styling)
+- [x] Cards-tiles block polish (left/stacked variants, tile images, 30px gap, centered text)
+- [x] "Protecting what's most important" section polish (blue heading, paragraph spacing)
+- [x] Columns-highlight block polish (text order, checkmark icons, QR code 150px)
+
 ### Next Steps
 
-- [ ] Cards-tiles block polish
-- [ ] Columns-highlight block polish
-- [ ] Default content sections polish (CTA banners, about text, disclaimer)
+- [ ] Disclaimer section polish
 - [ ] Visual QA and full-page comparison against source
+- [ ] Update migration report with final details
+- [ ] Stage and push all changes
 - [ ] Mobile responsive adaptation (deferred)
 
 ---

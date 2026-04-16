@@ -551,3 +551,19 @@ main .section.dark .columns > div > div:nth-child(2) a:hover {
 main .section.center {
   text-align: center;
 }
+
+main .section.center h2 {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-blue-vibrant);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+main .section.center p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 26px;
+}
