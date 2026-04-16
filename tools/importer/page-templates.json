@@ -5,7 +5,7 @@
       "urls": [
         "https://www.nationwide.com/"
       ],
-      "description": "Nationwide homepage with hero banner, quick-action cards, promotional columns, image tiles, CTA banners, and mobile app promo",
+      "description": "Nationwide homepage with hero banner, quick-action cards, promotional columns, image tiles, CTA banners, mobile app promo, and disclaimer",
       "blocks": [
         {
           "name": "hero-homepage",
@@ -23,6 +23,13 @@
           "name": "columns-promo",
           "instances": [
             "#p43486 .row.text-center.align-center"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#p45265 .nw-cta-small",
+            "#p45310 .nw-cta-small"
           ]
         },
         {
@@ -77,28 +84,28 @@
           "name": "Member CTA Banner",
           "selector": "#p45265",
           "style": "dark",
-          "blocks": [],
-          "defaultContent": [
-            "#p45265 .nw-cta-small"
-          ]
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
         },
         {
           "id": "section-5",
-          "name": "Image Tiles Two",
+          "name": "Image Tiles Left",
           "selector": "#p30097",
           "style": null,
           "blocks": [
-            "cards-tiles"
+            "cards-tiles (left)"
           ],
           "defaultContent": []
         },
         {
           "id": "section-6",
-          "name": "Image Tiles Three",
+          "name": "Image Tiles Stacked",
           "selector": "#p30087",
           "style": null,
           "blocks": [
-            "cards-tiles"
+            "cards-tiles (stacked)"
           ],
           "defaultContent": []
         },
@@ -118,10 +125,10 @@
           "name": "Business CTA Banner",
           "selector": "#p45310",
           "style": "dark",
-          "blocks": [],
-          "defaultContent": [
-            "#p45310 .cta-text"
-          ]
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
         },
         {
           "id": "section-9",
@@ -137,7 +144,7 @@
           "id": "section-10",
           "name": "Disclaimer",
           "selector": "#p44604",
-          "style": null,
+          "style": "disclaimer",
           "blocks": [],
           "defaultContent": [
             "#p44604 .nw-text-sm"

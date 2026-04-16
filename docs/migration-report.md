@@ -363,13 +363,119 @@ The search form uses `:search:` marker in the nav document. The JS detects it in
 - [x] "Protecting what's most important" section polish (blue heading, paragraph spacing)
 - [x] Columns-highlight block polish (text order, checkmark icons, QR code 150px)
 
+- [x] Disclaimer section polish (14px font, compact padding, section-metadata variant)
+- [x] Empty metadata section fix (merged Metadata into disclaimer section to remove white space)
+- [x] Search icon cleanup (moved inline data URI to `/icons/bolt-search.svg`)
+
 ### Next Steps
 
-- [ ] Disclaimer section polish
 - [ ] Visual QA and full-page comparison against source
-- [ ] Update migration report with final details
-- [ ] Stage and push all changes
 - [ ] Mobile responsive adaptation (deferred)
+
+---
+
+## Task 11: Dark CTA Sections Polish
+
+Converted both dark CTA banner sections to use Columns blocks for proper 3-column layout.
+
+### Member CTA ("Are you a Nationwide member?")
+
+- **Layout**: Columns block with 3 cells — handshake icon | stacked text (bold + description) | outlined white button
+- **Icon**: `handshake.svg` extracted from source DOM, 56x56px
+- **Button**: Outlined white, `height: 38px`, `border-radius: 4px`
+- **Authoring**: Clear 3-column table in DA editor
+
+### Business CTA ("Have a business to protect?")
+
+- **Layout**: Columns block with 2 cells — storefront icon | bold text + inline link
+- **Icon**: `storefront.svg` extracted from source DOM, 56x56px
+- **Link**: Inline white underlined text (not a button)
+- **Icon alignment**: `line-height: 0` + `display: block` on icon for perfect vertical centering
+
+---
+
+## Task 12: Cards-Tiles Block Polish
+
+Rebuilt tiles with image backgrounds, two variants, and proper grid spacing.
+
+### Variants
+
+| Variant | CSS Class | Layout | Content Order |
+|---------|-----------|--------|---------------|
+| `cards-tiles (left)` | `.left` | Narrow left (1fr) + wide right (2fr) | Row 1 = narrow, Row 2 = wide |
+| `cards-tiles (stacked)` | `.stacked` | Wide left (2fr) + 2 stacked right (1fr) | Row 1 = wide, Rows 2-3 = stacked |
+
+### Key Styling
+
+- Grid gap: `30px` between tiles, `15px` outer padding
+- Tile images: `object-fit: cover`, hover `scale(1.05)` with `0.35s` transition
+- Labels: Centered text, `18px`, weight `500`, `20px` padding, blue background
+- Section spacing: `60px` top padding, `40px` between sections
+
+### Tile Images (embedded in DA document)
+
+| Tile | Image File | Section |
+|------|-----------|---------|
+| Long-term care | `tile-longterm-care.jpg` | Left variant (narrow) |
+| Financial future | `tile-financial-future.jpg` | Left variant (wide) |
+| Small business | `tile-small-business.jpg` | Stacked variant (wide) |
+| Bundle driving | `tile-bundle-driving.jpg` | Stacked variant (small top) |
+| Easy access | `tile-easy-access.png` | Stacked variant (small bottom) |
+
+---
+
+## Task 13: Remaining Sections Polish
+
+### "Protecting what's most important" (center section)
+
+- H2 heading: Blue `#0047bb`, serif font, 32px, centered
+- Paragraphs: 18px, `line-height: 1.6`, `margin-bottom: 26px`
+- Applied via `.section.center` CSS variant
+
+### Columns-Highlight (mobile app promo)
+
+- Fixed text order: "Get easy 24/7 support on our" above "mobile app" heading
+- Added white checkmark icons from source (`checkmark-white.png`, 20x20px)
+- QR code sized to 150x150px matching source
+- Heading: Bold serif, 32px, white
+
+### Disclaimer Section
+
+- Added `.section.disclaimer` CSS variant: `14px` font, `padding: 16px 0`
+- Merged Metadata block into disclaimer section to eliminate empty trailing section
+- Section-metadata `disclaimer` applied in content
+
+### Search Icon Cleanup
+
+- Moved inline data URI SVG from `header.css` to `/icons/bolt-search.svg`
+- Same exact Nationwide BoltSearchIcon path data, referenced via `url('/icons/bolt-search.svg')`
+
+---
+
+## Content Structure Summary
+
+The homepage `index.plain.html` has the following section structure:
+
+| # | Section | Style | Content |
+|---|---------|-------|---------|
+| 1 | Hero | `blue` | `hero-homepage` block (image + text + form) |
+| 2 | Quick Actions | — | `cards-action` block (3 cards with icons, dropdowns, CTAs) |
+| 3 | 90 Years Promo | `light` | H2 heading + `columns-promo` block (3 icon columns) |
+| 4 | Member CTA | `dark` | `columns` block (handshake icon + text + button) |
+| 5 | Image Tiles 1 | — | `cards-tiles (left)` block (narrow + wide) |
+| 6 | Image Tiles 2 | — | `cards-tiles (stacked)` block (wide + 2 stacked) |
+| 7 | About Text | `center` | H2 heading + paragraphs (default content) |
+| 8 | Business CTA | `dark` | `columns` block (storefront icon + text) |
+| 9 | Mobile App | `blue` | `columns-highlight` block (features + QR code) |
+| 10 | Disclaimer + Metadata | `disclaimer` | Small text + page Metadata |
+
+### DA/Local File Sync
+
+| File | DA Version | Local Preview |
+|------|-----------|---------------|
+| `content/index.plain.html` | DA upload format | Same (no icon syntax differences) |
+| `content/nav.plain.html` | `:search:` icon syntax | `nav.plain.html` (root) with HTML spans |
+| `content/footer.plain.html` | `:icon:` syntax for social | `footer.plain.html` (root) with HTML spans |
 
 ---
 
