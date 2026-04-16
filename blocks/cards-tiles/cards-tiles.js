@@ -1,24 +1,44 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation, getBlockId } from '../../scripts/scripts.js';
-import { createCard } from '../card/card.js';
-
 export default function decorate(block) {
-  const blockId = getBlockId('cards-tiles');
-  block.setAttribute('id', blockId);
-  block.setAttribute('aria-label', `Cards for ${blockId}`);
-  block.setAttribute('role', 'region');
-  block.setAttribute('aria-roledescription', 'Cards');
+  const rows = [...block.children];
 
-  /* change to ul, li */
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    ul.append(createCard(row));
+  const container = document.createElement('div');
+  container.className = 'cards-tiles-grid';
+
+  rows.forEach((row, i) => {
+    const tile = document.createElement('a');
+    tile.className = 'cards-tiles-tile';
+
+    const cols = [...row.children];
+
+    // Column 1: image
+    const img = cols[0] ? cols[0].querySelector('img') : null;
+    if (img) {
+      const imgWrapper = document.createElement('div');
+      imgWrapper.className = 'cards-tiles-img';
+      img.loading = 'eager';
+      imgWrapper.append(img);
+      tile.append(imgWrapper);
+    }
+
+    // Column 2: link text
+    const link = cols[1] ? cols[1].querySelector('a') : null;
+    if (link) {
+      tile.href = link.href;
+      const label = document.createElement('div');
+      label.className = 'cards-tiles-label';
+      label.textContent = link.textContent.trim();
+      tile.append(label);
+    }
+
+    // Wide tile: second row for "left" variant, first row for others
+    const wideIndex = block.classList.contains('left') ? 1 : 0;
+    if (i === wideIndex) {
+      tile.classList.add('cards-tiles-wide');
+    }
+
+    container.append(tile);
   });
-  ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    moveInstrumentation(img, optimizedPic.querySelector('img'));
-    img.closest('picture').replaceWith(optimizedPic);
-  });
+
   block.textContent = '';
-  block.append(ul);
+  block.append(container);
 }

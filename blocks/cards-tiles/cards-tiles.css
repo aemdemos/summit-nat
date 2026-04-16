@@ -1,63 +1,102 @@
-/* Cards Tiles — linked tile cards with blue overlay text */
+/* Cards Tiles — image tiles with overlay text */
 
-.cards-tiles {
+.cards-tiles-container {
   padding: 0;
 }
 
-.cards-tiles > div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 4px;
+.cards-tiles-container .cards-tiles-wrapper {
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  padding: 0;
 }
 
-.cards-tiles > div > div {
+.cards-tiles .cards-tiles-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 15px;
+}
+
+.cards-tiles-tile {
   position: relative;
   background-color: var(--color-blue-vibrant);
-  min-height: 180px;
+  min-height: 400px;
   display: flex;
   align-items: flex-end;
+  text-decoration: none;
   overflow: hidden;
-  transition: background-color var(--transition-base);
 }
 
-.cards-tiles > div > div:hover {
-  background-color: var(--link-hover-color);
+.cards-tiles-tile:hover {
+  text-decoration: none;
 }
 
-.cards-tiles > div > div > div {
-  padding: 20px 24px;
+.cards-tiles-tile:hover .cards-tiles-img img {
+  transform: scale(1.05);
+}
+
+/* Background image */
+.cards-tiles-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cards-tiles-img img {
   width: 100%;
-}
-
-.cards-tiles a {
-  color: var(--color-white);
-  font-family: var(--heading-font-family);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.3;
-  text-decoration: none;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.35s ease;
+}
+
+/* Label bar at bottom of tile */
+.cards-tiles-label {
   position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--color-blue-vibrant);
+  color: var(--color-white);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-/* Tile is made clickable via the link itself, no overlay needed */
-
-.cards-tiles a:hover {
-  text-decoration: none;
+/* Wide tile spans full height in stacked variant */
+.cards-tiles.stacked .cards-tiles-tile.cards-tiles-wide {
+  grid-row: 1 / -1;
 }
 
-/* First tile in each set is larger */
-.cards-tiles > div > div:first-child {
-  min-height: 280px;
+/* ===== "left" variant: 2 tiles — narrow first + wide second ===== */
+.cards-tiles.left .cards-tiles-grid {
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
 }
 
-@media (width >= 900px) {
-  .cards-tiles > div {
-    grid-template-columns: 2fr 1fr;
-  }
+.cards-tiles.left .cards-tiles-tile:not(.cards-tiles-wide) {
+  min-height: 400px;
+}
 
-  .cards-tiles > div > div:first-child {
-    grid-row: span 2;
-    min-height: 360px;
-  }
+/* ===== "stacked" variant: 3 tiles — wide left + 2 stacked right ===== */
+.cards-tiles.stacked .cards-tiles-grid {
+  grid-template-rows: 1fr 1fr;
+  row-gap: 30px;
+}
+
+.cards-tiles.stacked .cards-tiles-tile:not(.cards-tiles-wide) {
+  min-height: 185px;
+}
+
+/* Tile section spacing */
+main > .section:has(.cards-tiles) {
+  padding: 60px 0 0;
+  margin-bottom: 0;
+}
+
+main > .section:has(.cards-tiles.left) {
+  margin-bottom: 40px;
 }
