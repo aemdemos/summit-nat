@@ -567,3 +567,15 @@ main .section.center p {
   color: var(--text-color);
   margin-bottom: 26px;
 }
+
+/* Disclaimer / small text section */
+main .section.disclaimer {
+  padding: 16px 0;
+}
+
+main .section.disclaimer p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0;
+}
