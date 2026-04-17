@@ -118,16 +118,6 @@ export function getBlockId(name) {
   return `${name}_${forBlock}`;
 }
 
-/**
- * Loads self-hosted @font-face rules (font-display: swap). Does not await document.fonts.ready
- * so font files do not block the eager path / LCP; fallbacks in styles.css paint first.
- * Sets session storage when fonts.css has been requested (non-localhost).
- */
-async function loadFonts() {
-  await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
-  if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
-}
-
 function autolinkModals(doc) {
   doc.addEventListener('click', async (e) => {
     const origin = e.target.closest('a');
@@ -475,11 +465,8 @@ async function loadEager(doc) {
   if (main) {
     decorateMain(main);
     const headerEl = doc.querySelector('header');
-    /* Header was loading in loadLazy after first paint, so the nav height went 0→~230px and shifted <main> (CLS). Load with fonts before appear. */
-    await Promise.all([
-      loadFonts(),
-      headerEl ? loadHeader(headerEl) : Promise.resolve(),
-    ]);
+    /* Header used to load in loadLazy after first paint (nav height 0→full bar), shifting <main> (CLS). Load before appear. Webfonts load via styles.css @import. */
+    if (headerEl) await loadHeader(headerEl);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
@@ -502,7 +489,6 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  loadFonts();
 }
 
 /**
