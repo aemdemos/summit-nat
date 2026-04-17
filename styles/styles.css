@@ -132,6 +132,16 @@ header {
   height: auto;
 }
 
+/*
+ * Header block + header.css load in loadLazy — after first paint. Reserve the desktop
+ * nav slot here (critical CSS) so space exists before the block runs; matches ~utility+brand+menu.
+ */
+@media (width >= 900px) {
+  body > header {
+    min-height: 228px;
+  }
+}
+
 header .header,
 footer .footer {
   visibility: hidden;

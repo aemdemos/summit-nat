@@ -1,5 +1,7 @@
 /* Nationwide Header — 3-bar desktop layout matching source exactly */
 
+/* Desktop header min-height for CLS lives in styles/styles.css (eager); this file loads with the block. */
+
 /* ===== wrapper ===== */
 header .nav-wrapper {
   width: 100%;
