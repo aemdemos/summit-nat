@@ -27,7 +27,7 @@ main > .section.blue:has(.hero-homepage) > div {
   display: flex;
   flex-direction: row-reverse;
   align-items: stretch;
-  height: 438px;
+  height: 440px;
   color: var(--color-white);
 }
 
@@ -116,7 +116,7 @@ main > .section.blue:has(.hero-homepage) > div {
   margin: 0 0 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 
 .hero-homepage .hero-select {

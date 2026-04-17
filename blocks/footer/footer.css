@@ -20,7 +20,7 @@ footer .footer > div:first-child {
 }
 
 footer .footer > div:last-child {
-  padding-bottom: 20px;
+  padding-bottom: 60px;
 }
 
 footer .footer p {
@@ -200,7 +200,7 @@ footer .footer-privacy .columns > div > div:last-child {
 footer .footer-privacy .columns > div > div:last-child p {
   margin: 0;
   display: flex;
-  gap: 24px;
+  gap: var(--spacing-xl);
   align-items: flex-start;
 }
 
