@@ -1,5 +1,17 @@
 /* Nationwide Header — 3-bar desktop layout matching source exactly */
 
+/*
+ * CLS: EDS injects the header block in loadLazy, so <header> is empty on first paint
+ * and grows to ~228px when the nav mounts — shifting <main> down. Reserve that height
+ * on desktop so the slot matches the loaded layout (45 utility + 100 brand + 82 menu).
+ * Mobile layout differs; do not apply a tall min-height there.
+ */
+@media (width >= 900px) {
+  body > header {
+    min-height: 228px;
+  }
+}
+
 /* ===== wrapper ===== */
 header .nav-wrapper {
   width: 100%;
