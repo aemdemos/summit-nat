@@ -84,7 +84,7 @@ header nav .nav-utility-right {
 /* ===== Bar 2: Brand (white bar, logo left, search + login right) ===== */
 header nav .nav-brand {
   background-color: var(--background-color);
-  border-bottom: 1px solid #e0e0e0;
+  padding:10px 0;
 }
 
 header nav .nav-brand .default-content-wrapper {
@@ -224,7 +224,7 @@ header nav .nav-login-btn:hover {
 /* ===== Bar 3: Menu (gray bar, blue nav items left, CTA buttons right) ===== */
 header nav .nav-sections {
   background-color: #f2f2f3;
-  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
 }
 
 header nav .nav-sections .default-content-wrapper {

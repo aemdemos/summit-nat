@@ -386,7 +386,7 @@ main .section.light,
 main .section.highlight {
   background-color: var(--color-gray-pale);
   margin: 0;
-  padding: var(--spacing-l) 0;
+  padding: var(--spacing-m) 0;
 }
 
 /* section variants - vibrant blue */
@@ -425,8 +425,10 @@ main .section.blue a.button:hover {
 main .section.dark {
   background-color: var(--color-blue-dark);
   color: var(--color-text-inverse);
-  margin: 0;
-  padding: 0;
+
+  /* margin: var(--spacing-m) 0 var(--spacing-xl) 0; */
+  padding: var(
+  --spacing-xs) 0;
 }
 
 main .section.dark h1,
@@ -570,7 +572,7 @@ main .section.center p {
 
 /* Disclaimer / small text section */
 main .section.disclaimer {
-  padding: 16px 0;
+  padding: var(--spacing-l) 0;
 }
 
 main .section.disclaimer p {
