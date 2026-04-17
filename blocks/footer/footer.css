@@ -1,22 +1,218 @@
-@import url('./footer-tokens.css');
+/* Nationwide Footer — dark background, 6 sections */
 
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #222;
+  color: #c9cac8;
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  line-height: 1.6;
 }
 
 footer .footer > div {
-  margin: auto;
-  max-width: var(--footer-max-width);
-  padding: var(--footer-padding);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+footer .footer > div:first-child {
+  padding-top: 20px;
+}
+
+footer .footer > div:last-child {
+  padding-bottom: 20px;
 }
 
 footer .footer p {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: var(--footer-padding-desktop);
-  }
+footer .footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer .footer a:hover {
+  color: #c9cac8;
+}
+
+footer .footer .footer-separator {
+  color: #c9cac8;
+  padding: 0 8px;
+  text-decoration: none;
+}
+
+/* ===== Section 1: Brand (logo + phone) ===== */
+footer .footer-brand .default-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+footer .footer-brand p:first-child a {
+  text-decoration: none;
+  display: inline-block;
+  line-height: 0;
+}
+
+footer .footer-brand img {
+  display: block;
+  width: 85px;
+  height: auto;
+}
+
+footer .footer-brand p:last-child {
+  text-align: right;
+  color: #c9cac8;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+footer .footer-brand p:last-child strong {
+  font-weight: 700;
+}
+
+footer .footer-brand p:last-child a {
+  color: #fff;
+  font-weight: 400;
+}
+
+/* ===== Section 2: Social icons ===== */
+footer .footer-social .default-content-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 16px;
+}
+
+footer .footer-social p {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+footer .footer-social a {
+  text-decoration: none;
+  display: inline-block;
+  line-height: 0;
+}
+
+footer .footer-social img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(0.53);
+  transition: filter 0.2s;
+}
+
+footer .footer-social .icon {
+  width: 40px;
+  height: 40px;
+}
+
+footer .footer-social .icon img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(0.53);
+  transition: filter 0.2s;
+}
+
+footer .footer-social a:hover img,
+footer .footer-social a:hover .icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* ===== Section 3: About links ===== */
+footer .footer-about .default-content-wrapper {
+  padding-bottom: 20px;
+}
+
+footer .footer-about a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ===== Section 4: Partners ===== */
+footer .footer-partners .default-content-wrapper {
+  padding-bottom: 0;
+}
+
+footer .footer-partners p:first-child {
+  color: #c9cac8;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+footer .footer-partners p:last-child {
+  margin-bottom: 26px;
+  font-size: 14px;
+}
+
+/* ===== Section 5: Legal / Underwriting text ===== */
+footer .footer-legal .default-content-wrapper {
+  padding-bottom: 0;
+}
+
+footer .footer-legal p {
+  color: #c9cac8;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+footer .footer-legal a {
+  font-size: 14px;
+}
+
+/* ===== Section 6: Privacy (Columns block: links left, badges right) ===== */
+footer .footer-privacy .columns-wrapper {
+  padding: 0;
+}
+
+/* Override base columns: force row layout, not column */
+footer .footer-privacy .columns > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Left column: privacy links — take remaining space */
+footer .footer-privacy .columns > div > div:first-child {
+  flex: 1 1 auto;
+  order: unset;
+}
+
+footer .footer-privacy .columns > div > div:first-child p {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Right column: badge images — shrink to fit content */
+footer .footer-privacy .columns > div > div:last-child {
+  flex: 0 0 auto;
+  order: unset;
+}
+
+footer .footer-privacy .columns > div > div:last-child p {
+  margin: 0;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+footer .footer-privacy .columns > div > div:last-child a {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+/* Override base columns img { width: 100% } */
+footer .footer-privacy .columns img {
+  width: auto;
+  height: auto;
+  max-height: 67px;
 }

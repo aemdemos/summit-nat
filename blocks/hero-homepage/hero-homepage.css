@@ -1,0 +1,200 @@
+/* Hero Homepage — full-width blue banner, text left + image right */
+
+/* Remove section padding so hero is flush edge-to-edge */
+main > .section.blue:has(.hero-homepage) {
+  padding: 0;
+}
+
+main > .section.blue:has(.hero-homepage) > div {
+  padding: 0;
+}
+
+.hero-homepage-container {
+  background-color: var(--color-blue-vibrant);
+}
+
+.hero-homepage-container .hero-homepage-wrapper {
+  max-width: unset;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-homepage {
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch;
+  height: 438px;
+  color: var(--color-white);
+}
+
+/* Right column: image + caption — flush top to bottom */
+.hero-homepage > div:first-child {
+  flex: 0 0 540px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero-homepage > div:first-child > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.hero-homepage > div:first-child p:first-child {
+  flex: 1;
+  margin: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.hero-homepage > div:first-child img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Caption bar — stuck directly to image, no gap */
+.hero-homepage > div:first-child p:last-child {
+  background-color: var(--color-blue-dark);
+  padding: 10px 30px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-white);
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+.hero-homepage > div:first-child p:last-child strong {
+  font-weight: 500;
+}
+
+/* Left column: text content */
+.hero-homepage > div:last-child {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 40px 40px 16px;
+}
+
+.hero-homepage > div:last-child > div {
+  max-width: 560px;
+}
+
+/* H1 — serif (Tiempos / Source Serif 4), visually matches source at 600 */
+.hero-homepage h1 {
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin: 0 0 25px;
+}
+
+/* H2 — body font, 24px, weight 400 */
+.hero-homepage h2 {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0 0 25px;
+  text-transform: none;
+}
+
+/* Quote form (select + zip + button) */
+.hero-homepage .hero-quote-form {
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-homepage .hero-select {
+  padding: 8px 24px 8px 8px;
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  border: 1px solid #808080;
+  border-radius: 4px;
+  background-color: #fff;
+  color: var(--text-color);
+  appearance: none;
+  cursor: pointer;
+  height: 39px;
+  width: 400px;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* stylelint-disable-next-line function-url-quotes */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb(64, 64, 54)'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 10px 8px;
+}
+
+.hero-homepage .hero-zip-input {
+  padding: 8px;
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  border: 1px solid #808080;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text-color);
+  height: 39px;
+  width: 274px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.hero-homepage .hero-zip-input::placeholder {
+  color: #999;
+}
+
+.hero-homepage a.hero-quote-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 11px;
+  background-color: #8cc8e9;
+  color: #141b4d;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  width: 200px;
+  height: 38px;
+  box-sizing: border-box;
+  transition: var(--button-transition);
+}
+
+.hero-homepage a.hero-quote-btn:hover {
+  background-color: #7ab8d9;
+  color: #141b4d;
+  text-decoration: none;
+}
+
+/* CTA links */
+.hero-homepage p {
+  margin: 0 0 4px;
+}
+
+.hero-homepage a:not(.hero-quote-btn) {
+  color: var(--color-white);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.hero-homepage a:not(.hero-quote-btn):hover {
+  text-decoration: underline;
+}

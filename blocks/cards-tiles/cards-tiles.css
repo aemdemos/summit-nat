@@ -1,0 +1,107 @@
+/* Cards Tiles — image tiles with overlay text */
+
+.cards-tiles-container {
+  padding: 0;
+}
+
+.cards-tiles-container .cards-tiles-wrapper {
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.cards-tiles .cards-tiles-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 15px;
+}
+
+.cards-tiles-tile {
+  position: relative;
+  background-color: #fff;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.cards-tiles-tile:hover {
+  text-decoration: none;
+}
+
+.cards-tiles-tile:hover .cards-tiles-img img {
+  opacity: 0.85;
+}
+
+.cards-tiles-tile:hover .cards-tiles-label {
+  background-color: #003a99;
+}
+
+/* Background image */
+.cards-tiles-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cards-tiles-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Label bar at bottom of tile */
+.cards-tiles-label {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--color-blue-vibrant);
+  color: var(--color-white);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  transition: background-color 0.3s ease-out;
+  box-sizing: border-box;
+}
+
+/* Wide tile spans full height in stacked variant */
+.cards-tiles.stacked .cards-tiles-tile.cards-tiles-wide {
+  grid-row: 1 / -1;
+}
+
+/* ===== "left" variant: 2 tiles — narrow first + wide second ===== */
+.cards-tiles.left .cards-tiles-grid {
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.cards-tiles.left .cards-tiles-tile:not(.cards-tiles-wide) {
+  min-height: 400px;
+}
+
+/* ===== "stacked" variant: 3 tiles — wide left + 2 stacked right ===== */
+.cards-tiles.stacked .cards-tiles-grid {
+  grid-template-rows: 1fr 1fr;
+  row-gap: 30px;
+}
+
+.cards-tiles.stacked .cards-tiles-tile:not(.cards-tiles-wide) {
+  min-height: 185px;
+}
+
+/* Tile section spacing */
+main > .section:has(.cards-tiles) {
+  padding: 60px 0 0;
+  margin-bottom: 0;
+}
+
+main > .section:has(.cards-tiles.left) {
+  margin-bottom: 40px;
+}

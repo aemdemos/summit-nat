@@ -1,0 +1,67 @@
+/* Columns Highlight — two-column promo on blue background */
+
+.columns-highlight {
+  color: var(--color-white);
+}
+
+.columns-highlight > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-highlight > div > div {
+  flex: 1;
+}
+
+/* Intro text — lighter, larger */
+.columns-highlight > div > div:first-child > p:first-child {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--color-white);
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+/* Heading — bold serif */
+.columns-highlight h3 {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin: 0 0 20px;
+}
+
+/* Feature list items with checkmarks */
+.columns-highlight p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-white);
+  margin: 0 0 12px;
+}
+
+.columns-highlight p img[alt="✓"] {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* QR code column */
+.columns-highlight > div > div:last-child {
+  text-align: center;
+}
+
+.columns-highlight > div > div:last-child img:not([alt="✓"]) {
+  width: 150px;
+  height: 150px;
+}
+
+@media (width >= 900px) {
+  .columns-highlight > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+}
