@@ -73,13 +73,6 @@ function decorateBrand(navBrand) {
     } else if (p.querySelector('picture, img[alt]') && link) {
       p.classList.add('nav-logo');
       link.className = '';
-      const logoImg = link.querySelector('img');
-      if (logoImg) {
-        logoImg.loading = 'eager';
-        logoImg.fetchPriority = 'high';
-        if (!logoImg.hasAttribute('width')) logoImg.setAttribute('width', '205');
-        if (!logoImg.hasAttribute('height')) logoImg.setAttribute('height', '60');
-      }
     } else if (p.classList.contains('button-wrapper') && link) {
       link.className = 'nav-login-btn';
       p.className = 'nav-login';
