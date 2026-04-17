@@ -119,14 +119,12 @@ export function getBlockId(name) {
 }
 
 /**
- * Loads fonts.css, waits for webfonts so first paint of hero/headings does not reflow (CLS).
- * Sets session storage when fonts have been requested (non-localhost).
+ * Loads self-hosted @font-face rules (font-display: swap). Does not await document.fonts.ready
+ * so font files do not block the eager path / LCP; fallbacks in styles.css paint first.
+ * Sets session storage when fonts.css has been requested (non-localhost).
  */
 async function loadFonts() {
   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
-  if (document.fonts?.ready) {
-    await document.fonts.ready;
-  }
   if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
 }
 
