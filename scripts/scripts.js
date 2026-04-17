@@ -119,10 +119,14 @@ export function getBlockId(name) {
 }
 
 /**
- * load fonts.css and set a session storage flag
+ * Loads fonts.css, waits for webfonts so first paint of hero/headings does not reflow (CLS).
+ * Sets session storage when fonts have been requested (non-localhost).
  */
 async function loadFonts() {
   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
+  if (document.fonts?.ready) {
+    await document.fonts.ready;
+  }
   if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
 }
 
@@ -472,13 +476,9 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    await loadFonts();
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
-  }
-
-  /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-  if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-    loadFonts();
   }
 }
 
