@@ -6,5 +6,4 @@
 
 /* Headings: Source Serif 4 (closest free match to Tiempos Headline/nw-secondary) */
 
-/* optional: avoid post-paint font swap (major CLS on hero headings) when combined with eager load in scripts.js */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600&display=optional');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap');
