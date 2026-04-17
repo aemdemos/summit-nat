@@ -464,9 +464,6 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
-    const headerEl = doc.querySelector('header');
-    /* Header used to load in loadLazy after first paint (nav height 0→full bar), shifting <main> (CLS). Load before appear. Webfonts load via styles.css @import. */
-    if (headerEl) await loadHeader(headerEl);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
@@ -486,6 +483,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
+  loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
