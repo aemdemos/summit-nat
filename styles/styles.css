@@ -425,6 +425,7 @@ main .section.blue a.button:hover {
 main .section.dark {
   background-color: var(--color-blue-dark);
   color: var(--color-text-inverse);
+
   /* margin: var(--spacing-m) 0 var(--spacing-xl) 0; */
   padding: var(
   --spacing-xs) 0;

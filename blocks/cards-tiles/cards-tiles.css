@@ -105,5 +105,5 @@ main > .section:has(.cards-tiles) {
 main > .section:has(.cards-tiles.left) {
   /* margin-bottom: 40px; */
   margin-top: var(--spacing-xl);
-  padding-top: 0px;
+  padding-top: 0;
 }
