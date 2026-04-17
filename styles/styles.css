@@ -10,8 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-@import url('./fonts.css');
-
 /* ============================================================
    Nationwide Design System — Extracted from nationwide.com
    ============================================================
@@ -39,7 +37,7 @@
   --color-text: #222;
   --color-text-inverse: #fff;
 
-  /* fonts — first family matches @font-face or a locally installed face; then metric fallbacks */
+  /* fonts */
   --body-font-family: "Poppins", poppins-fallback, sans-serif;
   --heading-font-family: "Source Serif 4", source-serif-fallback, serif;
 
